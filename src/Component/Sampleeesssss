@@ -1,0 +1,80 @@
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { Products } from '../../ProductsData/Data';
+
+function Search() {
+    const { term } = useParams();
+    const [filterData, setFilterData] = useState([]);
+
+    useEffect(() => {
+        const filteredData = Products.filter((item) =>
+            item.title.toLowerCase().includes(term.toLowerCase()) ||
+            item.type.toLowerCase().includes(term.toLowerCase())
+        );
+        setFilterData(filteredData);
+    }, [term]);
+
+    return (
+        <div className="container mt-4">
+            <div className="row">
+                {filterData.map((product, index) => (
+                    <div key={index} className="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div className="card">
+                            <img src={product.image} className="card-img-top" alt={product.title} />
+                            <div className="card-body">
+                                <h5 className="card-title">{product.title}</h5>
+                                <p className="card-text">{product.description}</p>
+                                <p className="card-text">Price: ${product.price}</p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+export default Search;
+
+
+
+
+
+
+
+
+
+//dropdown menu
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+    Menu
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <li class="dropdown-item" onClick={() => setUser("")}>
+      {user ? (
+        <HiOutlineLogout style={{ color: "red" }} />
+      ) : (
+        setUser(null)
+      )}
+    </li>
+    <li class="dropdown-item">
+      <NavLink className="nav-link" to="LoginForm">
+        <FaUser />
+      </NavLink>
+      <p className="mt-3 text-start" style={{ color: "black" }}>
+        {user ? user.name : "not logged"}
+      </p>
+    </li>
+    <li class="dropdown-item" onClick={() => user ? navigate('/Cart') : navigate('/Loginform')}>
+      <NavLink className="nav-link" to="Cart">
+        <FaShoppingCart />
+      </NavLink>
+      <span className="badge bg-primary rounded-circle">
+        {user ? user.cart.length : ""}
+      </span>
+    </li>
+    <li class="dropdown-item">
+      <FaUserLock style={{ color: "black" }} />
+    </li>
+  </ul>
+</div>

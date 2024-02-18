@@ -1,0 +1,9 @@
+.footer{
+    background-color:#3b5d50;
+}
+.footer li{
+    list-style: none;
+    color: black;
+    text-decoration: none;
+}
+
