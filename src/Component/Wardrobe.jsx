@@ -1,6 +1,8 @@
 import React from 'react'
 import { Products } from '../../ProductsData/Data';
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
 
 function Wardrobe() {
   const navigate=useNavigate()
@@ -19,6 +21,7 @@ function Wardrobe() {
 
 <div> 
 <div className="Table-container">
+  <Header/>
  
 
 
@@ -45,6 +48,7 @@ function Wardrobe() {
    </div>
  ))}
 </div>
+<Footer/>
 </div>
     
 

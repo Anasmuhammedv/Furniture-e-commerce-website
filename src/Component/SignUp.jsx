@@ -5,6 +5,8 @@ import { UserContextProvider } from './UserContextProvider';
 import { Globalcontext } from './GlobalContext';
 import { useNavigate } from 'react-router-dom';
 import Cart from './Cart';
+import Footer from './Footer';
+import Header from './Header';
 
 const SignUpSection = () => {
 
@@ -15,31 +17,17 @@ const SignUpSection = () => {
   const[email,setEmail]=useState('')
   const[password,setPassword]=useState('')
 
-
-  // console.log(password);
-
-  // useEffect(()=>{
-  //   console.log(signup);
-  // },[signup])
-
-  
   const handleSubmit=(e)=>{
     e.preventDefault()
     const User={email,password,name,cart:[]}
     setSignup([...signup,User]);
-    // setNewUser([...newUser,User])
-
     navigate('/Loginform')
-
-
-    
-
   }
-  // console.log("this is signup",signup);
-    // console.log("this is newuser",newUser);
 
 
   return (
+    <div>
+      <Header/>
     <section className="text-center Signup">
       
         <div className="card-body py-5 px-md-5">
@@ -50,7 +38,6 @@ const SignUpSection = () => {
 
 
               <form onSubmit={handleSubmit}>
-                {/* 2 column grid layout with text inputs for the first and last names */}
                 <div className="row">
                   <div className="col-md-6 mb-4">
                     <div className="form-outline">
@@ -66,19 +53,22 @@ const SignUpSection = () => {
                   </div>
                 </div>
 
-                {/* Email input */}
+
+
                 <div className="form-outline mb-4">
                   <input type="email" id="form3Example3" className="form-control" onChange={(e)=>setEmail(e.target.value)}/>
                   <label className="form-label" htmlFor="form3Example3">Email address</label>
                 </div>
 
-                {/* Password input */}
+
+
                 <div className="form-outline mb-4">
                   <input type="password" id="form3Example4" className="form-control" onChange={(e)=>setPassword(e.target.value)}/>
                   <label className="form-label" htmlFor="form3Example4">Password</label>
                 </div>
 
-                {/* Checkbox */}
+
+
                 <div className="form-check d-flex justify-content-center mb-4">
                   <input className="form-check-input me-2" type="checkbox" value="" id="form2Example33" defaultChecked />
                   <label className="form-check-label" htmlFor="form2Example33">
@@ -86,13 +76,15 @@ const SignUpSection = () => {
                   </label>
                 </div>
 
-                {/* Submit button */}
+
+
                 <button  className="btn btn-primary btn-block mb-4">
                   Sign up
                 </button>
 
 
-                {/* Register buttons */}
+
+
                 <div className="text-center">
                     <p>already have account <Link to="/LoginForm">Login</Link></p>
                   <p>or sign up with:</p>
@@ -116,8 +108,9 @@ const SignUpSection = () => {
             </div>
           </div>
         </div>
-      {/* </div> */}
     </section>
+    <Footer/>
+    </div>
   );
 };
 

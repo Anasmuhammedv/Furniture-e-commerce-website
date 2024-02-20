@@ -3,8 +3,13 @@ import { Products } from '../../ProductsData/Data';
 import bedImage from '../Component/Assets/Images/bed.jpg';
 import '../Css Files/Bed.css'
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
+
 
 function Bed() {
+
+  
 
   const navigate=useNavigate()
   
@@ -17,7 +22,12 @@ function Bed() {
   }
 
   return (
+    <div>
+      <Header/>
+    
     <div className="bed-container">
+      
+      
       
       <img className="img-fluid col-xl-12 MainImg" src={bedImage} alt="Bedroom" />
 
@@ -44,6 +54,8 @@ function Bed() {
           ))}
         </div>
       ))}
+    </div>
+    <Footer/>
     </div>
   );
 }

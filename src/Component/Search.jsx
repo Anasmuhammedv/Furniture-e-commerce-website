@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { Products } from "../../ProductsData/Data";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "./Header";
+import Footer from "./Footer";
 
 function Search() {
   const navigate = useNavigate();
@@ -21,6 +23,10 @@ function Search() {
   }, [term, setFilterData]);
 
   return (
+    <div>
+
+      <Header/>
+
     <div className="container mt-4">
       <div className="row">
         {filterData.map((product, index) => (
@@ -41,6 +47,8 @@ function Search() {
           </div>
         ))}
       </div>
+    </div>
+    <Footer/>
     </div>
   );
 }

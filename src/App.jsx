@@ -19,8 +19,16 @@ import SignUp from './Component/SignUp'
 import { UserContextProvider } from './Component/UserContextProvider'
 import Search from './Component/Search'
 import Cart from './Component/Cart'
-import AdminLogin from './Component/AdminLogin'
-import AdminView from './Component/AdminView'
+// import AdminLogin from './Component/AdminLogin'
+// import AdminView from './Component/AdminView'
+import ErrorPage from './Component/ErrorPage'
+// import Header from './Component/Header'
+import AdminLogin from './Component/AdminDatas/AdminLogin'
+import AdminView from './Component/AdminDatas/AdminView'
+import AdminNavbar from './Component/AdminDatas/AdminNavbar'
+import User from './Component/AdminDatas/User'
+import AdminProducyEdit from './Component/AdminDatas/AdminProducyEdit'
+import AdminAddProduct from './Component/AdminDatas/AdminAddProduct'
 
 
 function App() {
@@ -28,11 +36,16 @@ function App() {
   return (
     <>
       <UserContextProvider>
-      <Header/>
+
+
+        {/* <Header/> */}
+     
+     
 
 
 
       <Routes>
+        {/* <Route path='Header' element={<Header/>}/> */}
         <Route path='/' element={<Home/>}/>
         <Route path='/Collection' element={<Collection/>}/>
         <Route path='/bed' element={<Bed/>}/>
@@ -45,14 +58,19 @@ function App() {
         <Route path='signup' element={<SignUp/>}/>
         <Route path='/search/:term' element={<Search/>}/>
         <Route path='/cart' element={<Cart/>}/>
-        <Route path='/Adminlogin' element={<AdminLogin/>}/>
-        <Route path='/Adminview' element={<AdminView/>}/>
+        <Route path='/AdminLogin' element={<AdminLogin/>}/>
+        <Route path='/AdminView' element={<AdminView/>}/>
+        <Route path='*' element={<ErrorPage/>}/>
+        <Route path='/AdminNavbar' element={<AdminNavbar/>}/>
+        <Route path='/User' element={<User/>}/>
+        <Route path='/AdminProducyEdit/:id' element={<AdminProducyEdit/>}/>
+        <Route path='/AdminAddProduct' element={<AdminAddProduct/>}/>
       </Routes>
 
       
       </UserContextProvider>
 
-      <Footer/>
+      {/* <Footer/> */}
 
     </>
   )

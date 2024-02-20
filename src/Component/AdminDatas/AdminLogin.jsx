@@ -8,7 +8,7 @@ function AdminLogin() {
     const Admin={
         name    : "Admin",
         email   : "admin@gmail.com",
-        password: 12345
+        password: 123456
     }
     const[email,setEmail]=useState("")
     const[passwords,setpasswords]=useState("")
@@ -31,9 +31,9 @@ function AdminLogin() {
     
   
   return (
-    <div>
-
+    <div className=''>
    <form  className='Login   d-flex flex-column 'onSubmit={handleSubmit}>
+       <h1>Admin login</h1>
     
       <div className="form-outline mb-4  Email">
         <input type="email" id="form2Example1" className="form-control"  onChange={(e)=>setEmail(e.target.value)}/>

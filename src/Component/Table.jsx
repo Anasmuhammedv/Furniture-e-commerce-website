@@ -2,6 +2,8 @@ import React from 'react'
 import { Products } from '../../ProductsData/Data';
 import Image4 from '../Component/Assets/Images/Table.jpg'
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
 
 function Table() {
 
@@ -18,6 +20,8 @@ function Table() {
 
   return (
     <div> 
+      
+      <Header/>
      <div className="Table-container">
         <div className='mb-20px'>
              <img src={Image4} style={{width:"100%", height:"100vh"}} ></img>
@@ -51,7 +55,7 @@ function Table() {
       ))}
     </div>
 
-
+     <Footer/>
     </div>
   )
 }

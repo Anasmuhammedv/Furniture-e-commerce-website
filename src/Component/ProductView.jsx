@@ -1,19 +1,24 @@
 import React, { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { Products } from '../../ProductsData/Data';
+// import { Products } from '../../ProductsData/Data';
 import '../Css Files/ProductView.css';
 import { Globalcontext } from './GlobalContext';
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
 
 
 function ProductView() {
+    const [,,,,,,products,setProducts]=useContext(Globalcontext)
+
+
     const navigate=useNavigate()
     const[user,setUser,signup,setSignup,newUser,setNewUser]=useContext(Globalcontext)
     const { id } = useParams()
 
 
     useEffect(()=>{
-        const filterProducts = Products.find((item) => item.id == id)
+        const filterProducts = products.find((item) => item.id == id)
         setNewUser(filterProducts)
 
     },[id,newUser])
@@ -22,21 +27,7 @@ function ProductView() {
 
     console.log(user);
 
-    // const handleClick=()=>{
-    //     let exist=false;
-    //     for(const x in user.cart){
-    //         if(x.id==newUser.id){
-    //             break;
-    //         }
-    //     }
-    //     if(!exist){
-
-    //         user.cart.push({...newUser})
-    //         console.log(user.cart);
-    //     }
-
-        
-    // }
+   
 
        const handleClick=()=>{
         const exist = user.cart.some((item)=>item.id==newUser.id)
@@ -47,6 +38,11 @@ function ProductView() {
        }
 
     return (
+
+        <div>
+
+    
+            <Header/>
         <div className='Productview '>
 
 
@@ -57,11 +53,13 @@ function ProductView() {
                 <h3 className='price'>₹{newUser.price}</h3>
                 <h5 className='type'>{newUser.type}</h5>
                 <p className='description'>{newUser.description}</p>
-                <button onClick={user ? handleClick : ()=>navigate('/signUp')}>AddCart</button>
+                <button onClick={user ? handleClick : ()=>navigate('/LoginForm')}>AddCart</button>
 
             </div>
 
 
+        </div>
+        <Footer/>
         </div>
     )
 }

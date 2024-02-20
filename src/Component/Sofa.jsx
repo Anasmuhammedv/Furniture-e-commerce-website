@@ -3,6 +3,8 @@ import { Products } from '../../ProductsData/Data';
 import '../Css Files/Sofa.css'
 import Image3 from '../Component/Assets/Images/Sofa.jpg'
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
 
 
 function Sofa() {
@@ -19,6 +21,7 @@ function Sofa() {
 
   return (
     <div> 
+      <Header/>
     <div className="Table-container">
        <div className='mb-20px'>
         
@@ -51,6 +54,8 @@ function Sofa() {
        </div>
      ))}
    </div>
+
+   <Footer/>
 
 
    </div>
