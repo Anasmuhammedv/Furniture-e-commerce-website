@@ -28,7 +28,6 @@ function Table() {
 
         </div>
       
-      {/* <img className="img-fluid col-xl-12 MainImg" src={bedImage} alt="Bedroom" /> */}
 
     
       {rows.map((row, rowIndex) => (
@@ -45,8 +44,6 @@ function Table() {
                   <h1 className="card-price">₹{item.price}</h1>
                   <h5>{item.title}</h5>
 
-                  {/* <p>{item.description}</p> */}
-                  {/* <button className="btn btn-primary">Add to Cart</button> */}
                 </div>
               </div>
             </div>

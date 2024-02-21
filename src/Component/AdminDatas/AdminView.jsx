@@ -21,13 +21,15 @@ function AdminView() {
   return (
     <div> 
       <AdminNavbar/>
-      <h1>This is the admin page</h1>
+      <h1 style={{textAlign:"center", margin:"20px"}}>PRODUCTS</h1>
+      <div className='bg-secondary' style={{ padding:"30px"}}>
+
       {products.map((item, index) => (
-        <div key={index} className='card-container d-flex flex-row justify-content-between align-items-center bg-secondary'>
-          <div className=' d-flex flex-row bg-secondary'>
+        <div key={index} className='card-container d-flex flex-row justify-content-between align-items-center bg-light rounded-3' style={{margin:"20px", padding:"10px"}}>
+          <div className=' d-flex flex-row  '>
             {/* Adjust the width and height of the image using inline styles */}
             <img className='img-thumbnail' src={item.image} alt="Image not found" style={{ width: '200px', height: '200px' }} />
-            <div className='d-flex flex-column'>
+            <div className='d-flex flex-column justify-content-center' style={{marginLeft:"15px"}}>
             <h4>{item.title}</h4><br />
 
             <h3 className='card-title align-items-center'>{item.type} {" "} ₹: {item.price}</h3>
@@ -40,6 +42,8 @@ function AdminView() {
           </div>
         </div>
       ))}
+
+      </div>
     </div>
   );
 }

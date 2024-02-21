@@ -24,7 +24,7 @@ function AdminAddProduct() {
 
         e.preventDefault()
 
-        id:Math.random()*10;
+          id:Math.random()*10;
            let newdata  = new FormData(e.target);
            let title = newdata.get("title");
            let type = newdata.get("type");
@@ -47,11 +47,11 @@ function AdminAddProduct() {
 
 
   return (
-    <div style={{background:"orange"}}>
+    <div >
       <AdminNavbar />
       
-    <div className="container" style={{background:"grey", color:"white", width:"auto", marginTop:"200px"}}>
-      <h1 className="text-center mt-4 mb-5">ADD PRODUCT</h1>
+      <h1 className="text-center mt-4 mb-5 font-weight-bold ">ADD PRODUCT</h1>
+    <div className="container" style={{background:"grey", color:"white", width:"50%", marginTop:"100px ", padding:"20px"}}>
 
       <form onSubmit={(e)=>handlesubmit(e)}>
         <div className="row mb-3">

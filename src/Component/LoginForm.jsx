@@ -27,7 +27,7 @@ const LoginForm = () => {
     }
     else{
       setUser(null)
-      setSignup("")
+      // setSignup("")
       alert("please make sure that password or email is correct")
     }
   }
@@ -42,8 +42,10 @@ const LoginForm = () => {
     
       <Header/>
 
+
       
     <form  className='Login   d-flex flex-column 'onSubmit={handleSubmit}>
+      <h1 style={{textAlign:"center",fontFamily:"cursive"}}>LOGIN</h1>
       <div className="form-outline mb-4  Email">
         <input type="email" id="form2Example1" className="form-control" onChange={(e)=>Setgmail(e.target.value)} />
         <label className="form-label" htmlFor="form2Example1">Email address</label>

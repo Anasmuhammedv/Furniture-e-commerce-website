@@ -1,13 +1,9 @@
+
 import React, { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { FaShoppingCart } from "react-icons/fa";
-import { FaUser } from "react-icons/fa";
-import Home from "./Home";
-import Collection from "./Collection";
-import { UserContextProvider } from "./UserContextProvider";
-import { Globalcontext } from "./GlobalContext";
+import { FaShoppingCart, FaUser, FaUserLock } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
-import { FaUserLock } from "react-icons/fa6";
+import { Globalcontext } from "./GlobalContext";
 
 function Header() {
   const navigate = useNavigate();
@@ -22,12 +18,9 @@ function Header() {
   };
 
   return (
-    <nav
-      className="custom-navbar navbar navbar-expand-md navbar-dark bg-dark"
-      aria-label="Furni navigation bar "
-    >
-      <div className="container ">
-        <NavLink className="navbar-brand fs-2"  to={"/"}>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <div className="container">
+        <NavLink className="navbar-brand fs-2" to={"/"}>
           Haven Home<span>...</span>
         </NavLink>
         <button
@@ -43,7 +36,7 @@ function Header() {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarsFurni">
-          <form className="d-flex" role="search" onSubmit={handleSubmit}>
+          <form className="d-flex me-auto my-2 my-lg-0" onSubmit={handleSubmit}>
             <input
               className="form-control me-2"
               type="search"
@@ -53,8 +46,8 @@ function Header() {
             />
           </form>
 
-          <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-            <li className="nav-item active">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
               <NavLink className="nav-link" to="/">
                 Home
               </NavLink>
@@ -68,7 +61,6 @@ function Header() {
               <NavLink className="nav-link" to={"/Sofa"}>
                 Sofa
               </NavLink>
-             
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to={"/Table"}>
@@ -92,41 +84,37 @@ function Header() {
             </li>
           </ul>
 
-          <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5 ">
-            <li className="nav-item ms-1">
-              {user ? (
+          <ul className="navbar-nav d-flex align-items-center justify-content-center">
+            <li className="nav-item">
+              {user && (
                 <HiOutlineLogout
-                  onClick={() => setUser("")}
-                  style={{ color: "red" }}
+                  onClick={() => {
+                    setUser("");
+                    navigate("/");
+                  }}
+                  style={{ color: "red", cursor: "pointer" }}
                 />
-              ) : (
-                setUser(null)
               )}
             </li>
-            <li className="nav-item ">
-              <NavLink className="nav-link" to={'/LoginForm'}>
+            <li className="nav-item">
+              <NavLink className="nav-link" to={"/LoginForm"}>
                 <FaUser />
-              </NavLink>
-              <p className="mt-100px text-start" style={{ color: "white" }}>
-                {user ? user.name : "not logged"}{" "}
-              </p>
-            </li>
-
-            <li
-              className="nav-item m-l-19px"
-              onClick={() =>
-                user ? navigate("/cart") : navigate("/Loginform")
-              }
-            >
-              <h4 style={{ color: "blue" }}>{user ? user.cart.length : ""}</h4>
-              <NavLink className="nav-link " to={"/Cart"}>
-                <FaShoppingCart />
+                <span className="ms-1">{user ? user.name : "Not logged"}</span>
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to={"/AdminLogin"}>
-                {" "}
-                <FaUserLock style={{ color: "white" }} />{" "}
+              <NavLink
+                className="nav-link"
+                to={user ? "/Cart" : "/LoginForm"}
+                onClick={() => navigate(user ? "/Cart" : "/LoginForm")}
+              >
+                <FaShoppingCart />
+                {user && <span className="badge bg-dark ms-1"><h5>{user.cart.length}</h5></span>}
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to={"/AdminLogin"}>
+                <FaUserLock />
               </NavLink>
             </li>
           </ul>

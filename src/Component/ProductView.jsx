@@ -33,7 +33,11 @@ function ProductView() {
         const exist = user.cart.some((item)=>item.id==newUser.id)
 
         if(!exist){
-            user.cart.push({...newUser})
+            // user.cart.push({...newUser})
+            setUser(prevUser=>({
+                ...prevUser,
+                cart:[...prevUser.cart,{...newUser,qty:1}]
+            }))
         }
        }
 

@@ -4,9 +4,9 @@ import { LuLogOut } from "react-icons/lu";
 
 function AdminNavbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{height:"80px"}}>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{height:"auto"}}>
       <div className="container">
-        <NavLink className="navbar-brand" to="">Admin Panel</NavLink>
+        <NavLink className="navbar-brand fs-2 font-weight-bold" to={"/AdminView"}>ADMIN PANEL</NavLink>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>

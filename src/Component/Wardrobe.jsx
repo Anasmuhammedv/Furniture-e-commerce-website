@@ -39,8 +39,6 @@ function Wardrobe() {
              <h1 className="card-price">₹{item.price}</h1>
              <h5>{item.title}</h5>
 
-             {/* <p>{item.description}</p> */}
-             {/* <button className="btn btn-primary">Add to Cart</button> */}
            </div>
          </div>
        </div>

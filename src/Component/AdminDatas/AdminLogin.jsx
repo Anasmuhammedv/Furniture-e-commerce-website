@@ -1,59 +1,50 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+
+
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AdminNavbar from './AdminNavbar';
 
 function AdminLogin() {
+    const navigate = useNavigate();
 
-    const navigate=useNavigate()
-  
-    const Admin={
-        name    : "Admin",
-        email   : "admin@gmail.com",
+    const Admin = {
+        name: "Admin",
+        email: "admin@gmail.com",
         password: 123456
-    }
-    const[email,setEmail]=useState("")
-    const[passwords,setpasswords]=useState("")
-    const[adminLogin,setAdminLogin]=useState([])
+    };
 
-    const handleSubmit=(event)=>{
-        event.preventDefault()
-        if(Admin.email==email&&Admin.password==passwords){
-            navigate('/AdminView')
-            
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [adminLogin, setAdminLogin] = useState([]);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (Admin.email == email && Admin.password == password) {
+            navigate('/AdminView');
+        } else {
+            alert("Email or password is incorrect");
         }
-        else{
-            alert("email or password is incorrect")
-        }
-         
-         
-    }
-    console.log(email);
-    console.log(passwords);
-    
-  
-  return (
-    <div className=''>
-   <form  className='Login   d-flex flex-column 'onSubmit={handleSubmit}>
-       <h1>Admin login</h1>
-    
-      <div className="form-outline mb-4  Email">
-        <input type="email" id="form2Example1" className="form-control"  onChange={(e)=>setEmail(e.target.value)}/>
-        <label className="form-label" htmlFor="form2Example1">Email address</label>
-      </div>
+    };
 
-
-
-      <div className="form-outline mb-4 Email">
-        <input type="password" id="form2Example2" className="form-control" onChange={(e)=>setpasswords(e.target.value)}/>
-        <label className="form-label" htmlFor="form2Example2">Password</label>
-      </div>
-
-     
-
-      
-      <button type="submit" className="btn btn-primary btn-block mb-4">Sign in</button>
-    </form>
-    </div>
-  )
+    return (
+        <div>
+            <AdminNavbar />
+            <div className='container-fluid d-flex justify-content-center align-items-center vh-100 bg-secondary'>
+                <form className='card p-4' onSubmit={handleSubmit} style={{ maxWidth: '400px' }}>
+                    <h1 className='text-center mb-4'>Admin Login</h1>
+                    <div className="mb-3">
+                        <label htmlFor="email" className="form-label">Email address</label>
+                        <input type="email" id="email" className="form-control" onChange={(e) => setEmail(e.target.value)} />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="password" className="form-label">Password</label>
+                        <input type="password" id="password" className="form-control" onChange={(e) => setPassword(e.target.value)} />
+                    </div>
+                    <button type="submit" className="btn btn-dark btn-block">Sign in</button>
+                </form>
+            </div>
+        </div>
+    );
 }
 
-export default AdminLogin
+export default AdminLogin;
