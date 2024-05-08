@@ -3,8 +3,14 @@ import AdminNavbar from './AdminNavbar';
 import { Globalcontext } from '../GlobalContext';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector,useDispatch } from 'react-redux';
+import { Add_Admin_Products } from '../redux/ProductsSlice';
+
 
 function AdminAddProduct() {
+
+  const dispatch=useDispatch()
+ const  products = useSelector((state) => state.AdminProducts)
 
     const navigate=useNavigate()
 
@@ -15,8 +21,6 @@ function AdminAddProduct() {
         setSignup,
         newUser,
         setNewUser,
-        products,
-        setProducts,
       ] = useContext(Globalcontext);
       console.log(products);
     
@@ -39,7 +43,7 @@ function AdminAddProduct() {
             image:image
            };
 
-           setProducts([...products,newProduct])
+           dispatch(Add_Admin_Products([...products,newProduct]))
 
            navigate('/AdminView')    
 

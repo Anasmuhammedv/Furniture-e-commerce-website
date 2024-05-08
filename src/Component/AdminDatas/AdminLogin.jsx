@@ -1,7 +1,7 @@
 
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AdminNavbar from './AdminNavbar';
 
 function AdminLogin() {
@@ -28,7 +28,7 @@ function AdminLogin() {
 
     return (
         <div>
-            <AdminNavbar />
+            {/* <AdminNavbar /> */}
             <div className='container-fluid d-flex justify-content-center align-items-center vh-100 bg-secondary'>
                 <form className='card p-4' onSubmit={handleSubmit} style={{ maxWidth: '400px' }}>
                     <h1 className='text-center mb-4'>Admin Login</h1>
@@ -40,7 +40,17 @@ function AdminLogin() {
                         <label htmlFor="password" className="form-label">Password</label>
                         <input type="password" id="password" className="form-control" onChange={(e) => setPassword(e.target.value)} />
                     </div>
-                    <button type="submit" className="btn btn-dark btn-block">Sign in</button>
+                    {/* <button type="submit" className="btn btn-dark btn-block" style={{ marginBottom: '10px' }}>Sign in</button>
+                    <Link to={'/'}><button className='btn btn-light' style={{ textDecoration: 'none' }}>Back to Home</button></Link> */}
+
+                    <button type="submit" className="btn btn-dark btn-block" style={{ marginBottom: '10px' }}>Sign in</button>
+                    <div style={{ textAlign: 'center' }}>
+                    <Link to={'/'} style={{ textDecoration: 'none' }}>
+                    <button className='btn btn-light' style={{ display: 'block', margin: '0 auto' }}>Back to Home</button>
+                   </Link>
+                    </div>
+
+
                 </form>
             </div>
         </div>

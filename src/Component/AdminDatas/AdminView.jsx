@@ -1,20 +1,22 @@
-import React, { useContext } from 'react';
-import { Products } from '../../../ProductsData/Data';
+import React from 'react';
+
 import AdminNavbar from './AdminNavbar';
 import { useNavigate } from 'react-router-dom';
-import { Globalcontext } from '../GlobalContext';
+
 import { FaEdit } from "react-icons/fa";
 import { CiSquareRemove } from "react-icons/ci";
+import { useDispatch, useSelector } from 'react-redux';
+import { Admin_Remove } from '../redux/ProductsSlice';
 
 function AdminView() {
+  const Products=useSelector(state=>state.AdminProducts)
+
+  const dispatch = useDispatch()
   const navigate=useNavigate()
-  const [,,,,,,products,setProducts]=useContext(Globalcontext)
+  
 
   const handleRemove=(id)=>{
-    setProducts((prev) => (
-    
-       prev.filter((item) => item.id !== id)
-    ));
+    dispatch(Admin_Remove(id))
   };
   
 
@@ -24,7 +26,7 @@ function AdminView() {
       <h1 style={{textAlign:"center", margin:"20px"}}>PRODUCTS</h1>
       <div className='bg-secondary' style={{ padding:"30px"}}>
 
-      {products.map((item, index) => (
+      {Products.map((item, index) => (
         <div key={index} className='card-container d-flex flex-row justify-content-between align-items-center bg-light rounded-3' style={{margin:"20px", padding:"10px"}}>
           <div className=' d-flex flex-row  '>
             {/* Adjust the width and height of the image using inline styles */}
